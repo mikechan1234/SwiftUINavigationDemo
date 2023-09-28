@@ -8,5 +8,5 @@
 import Foundation
 
 enum ItemBRoute: Hashable {
-    case detail(ItemBListCellViewModel)
+    case detail(ItemB)
 }

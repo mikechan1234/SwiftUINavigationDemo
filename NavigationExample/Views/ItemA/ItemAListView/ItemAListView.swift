@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ItemAListView: View {
-    @StateObject var viewModel: ItemAListViewModel
+    var items: [ItemA]
     var body: some View {
-        List(viewModel.listItems) { value in
+        List(items) { value in
             NavigationLink(value: ItemARoute.detail(value)) {
-                ItemAListCell(viewModel: value)
+                ItemAListCell(item: value)
             }
         }.navigationTitle("Item A")
     }
@@ -21,7 +21,7 @@ struct ItemAListView: View {
 struct ItemAListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ItemAListView(viewModel: ItemAListViewModel())
+            ItemAListView(items: [.generate(), .generate()])
         }
     }
 }

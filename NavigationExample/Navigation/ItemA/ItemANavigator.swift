@@ -25,7 +25,7 @@ class ItemANavigator: ObservableObject, Navigate {
             return
         }
         
-        let pathComponents = url.pathComponents
+        _ = url.pathComponents
         //Unwrap from URL to Routes
         
     }
@@ -34,18 +34,14 @@ class ItemANavigator: ObservableObject, Navigate {
 extension ItemANavigator {
     @ViewBuilder func rootView() -> some View {
         ItemAListView(
-            viewModel: ItemAListViewModel()
+            items: ItemA.samples
         )
     }
     
     @ViewBuilder func view(for route: ItemARoute) -> some View {
         switch route {
-        case let .detail(viewModel):
-            ItemADetailView(
-                viewModel: ItemADetailViewModel(
-                    cellViewModel: viewModel
-                )
-            )
+        case let .detail(item):
+            ItemADetailView(item: item)
         }
     }
 }

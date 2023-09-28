@@ -8,23 +8,25 @@
 import SwiftUI
 
 struct ItemBContainerView: View {
-    @StateObject var navigator: ItemBNavigator
+    @StateObject var navigator = ItemBNavigator()
+    let viewBuilder: ItemBRouteViewBuilder
+    
     var body: some View {
         NavigationStack(path: $navigator.path) {
-            navigator.rootView()
-            .navigationDestination(for: ItemBRoute.self) { route in
-                navigator.view(for: route)
-            }
+            viewBuilder.makeRootView()
+                .navigationDestination(for: ItemBRoute.self) { route in
+                    viewBuilder.makeView(for: route)
+                }
         }.onOpenURL { url in
             navigator.handle(url: url)
-        }
+        }.environmentObject(navigator)
     }
 }
 
 struct ItemBContainerView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemBContainerView(
-            navigator: ItemBNavigator()
+        ItemBContainerView( 
+            viewBuilder: ItemBRouteViewBuilder()
         )
     }
 }

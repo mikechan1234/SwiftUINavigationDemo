@@ -9,7 +9,6 @@ import SwiftUI
 
 struct TabContainer: View {
     @StateObject var itemANavigator = ItemANavigator()
-    @StateObject var itemBNavigator = ItemBNavigator()
     
     var body: some View {
         TabView {
@@ -19,7 +18,7 @@ struct TabContainer: View {
                 Label("Item A", systemImage: "shippingbox")
             }
             ItemBContainerView(
-                navigator: itemBNavigator
+                viewBuilder: ItemBRouteViewBuilder()
             ).tabItem {
                 Label("Item B", systemImage: "command")
             }

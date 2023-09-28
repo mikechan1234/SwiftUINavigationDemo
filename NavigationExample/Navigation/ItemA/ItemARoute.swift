@@ -8,5 +8,5 @@
 import Foundation
 
 enum ItemARoute: Hashable {
-    case detail(ItemAListCellViewModel)
+    case detail(ItemA)
 }

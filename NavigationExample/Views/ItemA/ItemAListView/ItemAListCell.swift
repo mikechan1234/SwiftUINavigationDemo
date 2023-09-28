@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ItemAListCell: View {
-    let viewModel: ItemAListCellViewModel
+    let item: ItemA
     var body: some View {
         HStack {
-            Image(systemName: viewModel.systemImageName)
-            Text(viewModel.title)
+            Image(systemName: item.systemImageName)
+            Text(item.title)
         }.padding(.vertical, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
     }
 }
@@ -20,7 +20,7 @@ struct ItemAListCell: View {
 struct ItemAListCell_Previews: PreviewProvider {
     static var previews: some View {
         ItemAListCell(
-            viewModel: .generate()
+            item: .generate()
         )
     }
 }

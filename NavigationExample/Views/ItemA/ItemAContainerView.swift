@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ItemAContainerView: View {
-    @StateObject var navigator: ItemANavigator
+    @ObservedObject var navigator: ItemANavigator
     var body: some View {
         NavigationStack(path: $navigator.path) {
             navigator.rootView()

@@ -8,45 +8,45 @@
 import SwiftUI
 
 struct ItemBDetailView: View {
-    @ObservedObject var viewModel: ItemBDetailViewModel
+    @EnvironmentObject var navigator: ItemBNavigator
+    @State private var isPresentingModal: Bool = false
+    var item: ItemB
+    
     var body: some View {
         Form(content: {
             Section("Title") {
-                Text(viewModel.title)
+                Text(item.title)
             }
             Section("Description") {
-                Text(viewModel.description)
+                Text(item.description)
             }
             Section("Options") {
                 Button("Add New") {
-                    viewModel.show()
+                    navigator.go(to: .detail(.generate()))
                 }.padding(.vertical, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
                 Button("Show Modal") {
-                    viewModel.isPresentingModal.toggle()
+                    isPresentingModal.toggle()
                 }.padding(.vertical, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
                 Button("Pop to Root") {
-                    viewModel.poptoRoot()
+                    navigator.toRoot()
                 }.padding(.vertical, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
                 Button("Pop Once") {
-                    viewModel.pop()
+                    navigator.pop()
                 }.padding(.vertical, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
             }
-        }).fullScreenCover(isPresented: $viewModel.isPresentingModal) {
+        }).fullScreenCover(isPresented: $isPresentingModal) {
             FullScreenModalView()
         }
     }
 }
 
 struct ItemBDetailView_Previews: PreviewProvider {
-    @ObservedObject static var navigator = ItemBNavigator()
+    @State static var navigator = ItemBNavigator()
     static var previews: some View {
         NavigationStack(path: $navigator.path) {
             ItemBDetailView(
-                viewModel: ItemBDetailViewModel(
-                    cellViewModel: .generate(),
-                    navigator: navigator
-                )
-            )
+                item: .generate()
+            ).environmentObject(navigator)
         }
     }
 }

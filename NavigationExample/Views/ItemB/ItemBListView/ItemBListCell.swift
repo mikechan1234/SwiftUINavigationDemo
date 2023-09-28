@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct ItemBListCell: View {
-    let viewModel: ItemBListCellViewModel
+    let item: ItemB
     var body: some View {
         VStack(alignment: .leading) {
-            Text(viewModel.title).font(.headline)
-            Text(viewModel.description).font(.body)
+            Text(item.title).font(.headline)
+            Text(item.description).font(.body)
         }.padding(.vertical, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
     }
 }
 
 struct ItemBListCell_Previews: PreviewProvider {
     static var previews: some View {
-        ItemBListCell(viewModel: ItemBListCellViewModel(item: .generate()))
+        ItemBListCell(item: .generate())
     }
 }
