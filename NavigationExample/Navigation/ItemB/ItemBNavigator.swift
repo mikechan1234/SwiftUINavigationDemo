@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import Observation
 import OSLog
 
-class ItemBNavigator: ObservableObject, Navigate {
-    @Published var path: NavigationPath = NavigationPath()
+@Observable
+class ItemBNavigator: Navigate {
+    var path: NavigationPath = NavigationPath()
     
     private let logger = Logger(
         subsystem: "com.Michael.NavigationExample",

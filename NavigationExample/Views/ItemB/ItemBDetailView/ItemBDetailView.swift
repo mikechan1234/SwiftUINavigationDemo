@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ItemBDetailView: View {
-    @EnvironmentObject var navigator: ItemBNavigator
+    @Environment(ItemBNavigator.self) var navigator
     @State private var isPresentingModal: Bool = false
     var item: ItemB
     
@@ -46,7 +46,7 @@ struct ItemBDetailView_Previews: PreviewProvider {
         NavigationStack(path: $navigator.path) {
             ItemBDetailView(
                 item: .generate()
-            ).environmentObject(navigator)
+            ).environment(navigator)
         }
     }
 }

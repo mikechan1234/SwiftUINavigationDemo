@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ItemBContainerView: View {
-    @StateObject var navigator = ItemBNavigator()
+    @State var navigator = ItemBNavigator()
     let viewBuilder: ItemBRouteViewBuilder
     
     var body: some View {
@@ -19,7 +19,7 @@ struct ItemBContainerView: View {
                 }
         }.onOpenURL { url in
             navigator.handle(url: url)
-        }.environmentObject(navigator)
+        }.environment(navigator)
     }
 }
 
