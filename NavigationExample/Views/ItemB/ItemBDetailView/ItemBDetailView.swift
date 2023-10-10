@@ -11,7 +11,7 @@ struct ItemBDetailView: View {
     @Environment(ItemBNavigator.self) var navigator
     @State private var isPresentingModal: Bool = false
     var item: ItemB
-    
+
     var body: some View {
         Form(content: {
             Section("Title") {
@@ -33,6 +33,9 @@ struct ItemBDetailView: View {
                 Button("Pop Once") {
                     navigator.pop()
                 }.padding(.vertical, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                Button("Public Route") {
+                    navigator.go(to: ItemBPublicRoute.details(.generate()))
+                }
             }
         }).fullScreenCover(isPresented: $isPresentingModal) {
             FullScreenModalView()

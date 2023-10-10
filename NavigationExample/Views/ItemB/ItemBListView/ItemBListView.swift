@@ -8,13 +8,28 @@
 import SwiftUI
 
 struct ItemBListView: View {
+    @Environment(ItemADetailViewDidFinish.self) var itemADetailViewDidFinish
+    @State private var isPresentingAlert: Bool = false
+    
     var items: [ItemB]
     var body: some View {
-        List(items) { value in
-            NavigationLink(value: ItemBRoute.detail(value)) {
-                ItemBListCell(item: value)
+        VStack(spacing: 10) {
+            if isPresentingAlert {
+                Text("Did finish public route")
+                    .padding(10)
             }
-        }.navigationTitle("Item B")
+            List(items) { value in
+                NavigationLink(value: ItemBRoute.detail(value)) {
+                    ItemBListCell(item: value)
+                }
+            }
+        }
+        .navigationTitle("Item B")
+        .onChange(of: itemADetailViewDidFinish.value) {
+            isPresentingAlert = itemADetailViewDidFinish.value
+        }.onDisappear {
+            itemADetailViewDidFinish.value = false 
+        }
     }
 }
 

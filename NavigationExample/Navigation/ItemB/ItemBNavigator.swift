@@ -19,8 +19,13 @@ class ItemBNavigator: Navigate {
     )
     
     func go(to route: ItemBRoute) {
-        logger.log("Logging route")
+        logger.log("Going to route")
         path.append(route)
+    }
+
+    func go(to publicRoute: ItemBPublicRoute) {
+        logger.log("Going to public route")
+        path.append(publicRoute)
     }
     
     func pop() {

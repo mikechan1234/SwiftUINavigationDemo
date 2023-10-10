@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ItemAContainerView: View {
     @ObservedObject var navigator: ItemANavigator
+    @State var itemADetailViewDidFinish = ItemADetailViewDidFinish()
+    
     var body: some View {
         NavigationStack(path: $navigator.path) {
             navigator.rootView()
@@ -17,7 +19,7 @@ struct ItemAContainerView: View {
             }
         }.onOpenURL { url in
             navigator.handle(url: url)
-        }
+        }.environment(itemADetailViewDidFinish)
     }
 }
 
