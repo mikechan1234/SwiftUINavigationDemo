@@ -8,10 +8,6 @@
 import Foundation
 import SwiftUI
 
-enum ExternalRoute: Hashable {
-    case detail(ExternalItem)
-}
-
 @MainActor
 extension ExternalRoute {
     struct InternalViewBuilder {
@@ -26,15 +22,6 @@ extension ExternalRoute {
             case let .detail(item):
                 ExternalDetailView(item: item)
             }
-        }
-    }
-}
-
-extension ExternalRoute.InternalViewBuilder: ExternalPublicRouteViewBuildable {
-    func makeView(for route: ExternalPublicRoute) -> any View {
-        switch route {
-            case .details:
-                self.makeInternalRoute(for: .detail(ExternalItem.generate()))
         }
     }
 }

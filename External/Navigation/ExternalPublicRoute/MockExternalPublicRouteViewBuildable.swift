@@ -10,7 +10,7 @@ import SwiftUI
 struct MockExternalPublicRouteViewBuildable: ExternalPublicRouteViewBuildable {
     @ViewBuilder
     func makeView(for route: ExternalPublicRoute) -> any View {
-        Text("Item B Public Route View")
+        Text("External Public Route View from Mock")
             .padding()
     }
 }
