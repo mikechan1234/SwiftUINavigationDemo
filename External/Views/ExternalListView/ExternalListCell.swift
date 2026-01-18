@@ -1,14 +1,14 @@
 //
-//  ItemBListCell.swift
-//  NavigationExample
+//  ExternalListCell.swift
+//  External
 //
 //  Created by Michael Chan on 25/06/2023.
 //
 
 import SwiftUI
 
-struct ItemBListCell: View {
-    let item: ItemB
+struct ExternalListCell: View {
+    let item: ExternalItem
     var body: some View {
         VStack(alignment: .leading) {
             Text(item.title).font(.headline)
@@ -19,6 +19,6 @@ struct ItemBListCell: View {
 
 struct ItemBListCell_Previews: PreviewProvider {
     static var previews: some View {
-        ItemBListCell(item: .generate())
+        ExternalListCell(item: .generate())
     }
 }

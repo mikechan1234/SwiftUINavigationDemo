@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
+import External
 
 struct TabContainer: View {
     @StateObject var itemANavigator = ItemANavigator()
-    let itemBPublicRouteViewBuilder = ItemBPublicRoute.ViewBuilder()
     
     var body: some View {
         TabView {
@@ -18,11 +18,10 @@ struct TabContainer: View {
             ).tabItem {
                 Label("Item A", systemImage: "shippingbox")
             }
-            ItemBContainerView(
-                viewBuilder: ItemBRoute.ViewBuilder(),
-                publicRouteViewBuilder: ItemBPublicRoute.ViewBuilder()
+            ExternalContainerView(
+                publicRouteViewBuilder: ExternalRouteViewBuilder()
             ).tabItem {
-                Label("Item B", systemImage: "command")
+                Label("External", systemImage: "command")
             }
         }
     }

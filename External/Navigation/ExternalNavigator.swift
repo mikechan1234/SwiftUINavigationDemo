@@ -1,6 +1,6 @@
 //
-//  ItemBNavigator.swift
-//  NavigationExample
+//  ExternalNavigator.swift
+//  External
 //
 //  Created by Michael Chan on 25/06/2023.
 //
@@ -10,20 +10,20 @@ import Observation
 import OSLog
 
 @Observable
-class ItemBNavigator: Navigate {
+class ExternalNavigator: Navigate {
     var path: NavigationPath = NavigationPath()
     
     private let logger = Logger(
         subsystem: "com.Michael.NavigationExample",
-        category: "ItemBNavigator"
+        category: "ExternalNavigator"
     )
     
-    func go(to route: ItemBRoute) {
+    func go(to route: ExternalRoute) {
         logger.log("Going to route")
         path.append(route)
     }
 
-    func go(to publicRoute: ItemBPublicRoute) {
+    func go(to publicRoute: ExternalPublicRoute) {
         logger.log("Going to public route")
         path.append(publicRoute)
     }
